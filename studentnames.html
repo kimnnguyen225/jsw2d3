@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head><title></title></head>
+  <style>
+    /*table, th, td {
+      font-family: serif;
+      border: 1px solid black;
+      border-collapse: collapse;
+    }*/
+    table {
+      width: 80%;
+    }
+    label {
+        margin-right: 30px;
+    }
+    /*td {
+      text-align: center;
+      padding: 8px;
+    }
+    tr:nth-child(even) {
+    background-color: #00D5FF;
+    }*/
+  </style>
+  <body>
+    <p></p>
+    <label><input id='iname' placeholder='Type name here' autofocus value='hi'/></label>
+    <label><input id='iemail'placeholder='Type email here'/></label>
+    <label><input id='iphone'placeholder='555-555-555'/></label>
+    <button onclick='displayData()'>Insert Data</button>
+    <!-- <input type="submit" value="Submit" onclick="displayData()" /> -->
+    <table>
+        <thead>
+          <tr><th>Name</th><th>Email</th><th>Phone</th></tr>
+        </thead>
+      <tbody id='tBody'>
+      </tbody>
+    </table>
+<!-- /////////////////////////////////////////////////////////////////// -->
+    <script lang='javascript'>
+      var friends = [];
+      var nameCtrl = null;
+      var emailCtrl = null;
+      var phoneCtrl = null;
+
+      function displayData (){
+        friends = [];
+        nameCtrl = document.getElementById('iname');
+        emailCtrl = document.getElementById('iemail');
+        phoneCtrl = document.getElementById('iphone');
+
+        var name = nameCtrl.value;
+        var email = emailCtrl.value;
+        var phone = phoneCtrl.value;
+        // var friendObj = {
+        // Name: name,
+        // Email: email,
+        // Phone: phone
+        // };
+        var friendOjb = {};
+        friendOjb.Name = name;
+        friendOjb.Email = email;
+        friendOjb.Phone = phone;
+        friends.push(friendOjb);
+        displayTable();
+      }
+      function displayTable(){
+        var tbodycreate = document.getElementById('tBody');
+        for (idx=0;idx<friends.length;idx++){
+          var name = friends[idx].Name;
+          var email = friends[idx].Email;
+          var phone = friends[idx].Phone;
+          var dRow = '<tr>';
+        dRow += '<td>' + name + '</td>';
+        dRow += '<td>' + email + '</td>';
+        dRow += '<td>' + phone + '</td>';
+        dRow += '</tr>';
+        tbodycreate.innerHTML += dRow;
+        }
+      }
+
+    </script>
+  </body>
+</html>
